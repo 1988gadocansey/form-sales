@@ -52,19 +52,20 @@
                                     </div>
                                 </div>
                                 <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label for="customer_id" class="col-sm-4 control-label">{{trans('sale.customer')}}</label>
+                                     <div class="form-group">
+                                        <label for="employee" class="col-sm-4 control-label">Applicant Name</label>
                                         <div class="col-sm-8">
-                                        {!! Form::select('customer_id', $customer, Input::old('customer_id'), array('class' => 'form-control')) !!}
+                                            <input type="text" class="form-control" required="" name="name" id="name" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee" class="col-sm-4 control-label">Applicant Phone</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" required="" name="phone" id="phone" />
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="payment_type" class="col-sm-4 control-label">{{trans('sale.payment_type')}}</label>
-                                        <div class="col-sm-8">
-                                        {!! Form::select('payment_type', array('Cash' => 'Cash', 'Cheques' => 'Cheques'), Input::old('payment_type'), array('class' => 'form-control','required'=>'required')) !!}
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             
                         </div>
@@ -83,15 +84,15 @@
                                         <div class="col-sm-8">
                                             <div class="input-group">
                                                 <div class="input-group-addon">GHC</div>
-                                                <input type="text" required='' class="form-control" id="add_payment" ng-model="add_payment"/>
+                                                <input type="text" required='' name="pay" class="form-control" id="add_payment" ng-model="add_payment"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div>&nbsp;</div>
                                     <div class="form-group">
-                                        <label for="employee" class="col-sm-4 control-label">{{trans('sale.comments')}}</label>
+                                        <label for="payment_type" class="col-sm-4 control-label">{{trans('sale.payment_type')}}</label>
                                         <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="comments" id="comments" />
+                                        {!! Form::select('payment_type', array('Cash' => 'Cash', 'Cheques' => 'Cheques'), Input::old('payment_type'), array('class' => 'form-control','required'=>'required')) !!}
                                         </div>
                                     </div>
                                 </div>

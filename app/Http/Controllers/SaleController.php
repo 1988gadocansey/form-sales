@@ -27,7 +27,7 @@ class SaleController extends Controller {
 	public function index()
 	{
 		$sales = Sale::orderBy('id', 'desc')->first();
-		$customers = Customer::lists('name', 'id');
+		$customers = Customer::where('owner',@\Auth::user()->name)->orderBy("id","DESC")->lists('name', 'id');
 		return view('sale.index')
 			->with('sale', $sales)
 			->with('customer', $customers);
@@ -50,8 +50,16 @@ class SaleController extends Controller {
 	 */
 	public function store(SaleRequest $request, SystemController $sys)
 	{
-	    $sales = new Sale;
-        $sales->customer_id = Input::get('customer_id');
+            $customers = new Customer;
+            $customers->name = Input::get('name');
+
+            $customers->phone_number = Input::get('phone');
+
+            $customers->owner = @\Auth::user()->name;
+            $customers->save();
+ 
+        $sales = new Sale;
+        $sales->customer_id = $customers->id;
         $sales->user_id = Auth::user()->id;
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');
@@ -106,20 +114,20 @@ class SaleController extends Controller {
         $itemssale = @SaleItem::where('sale_id', $saleItemsData->sale_id)->get();
             Session::flash('message', 'You have successfully added sales');
             $itemInfo=@Item::where("id",$value->item_id)->first();
-            $form=@FormModel::where("SOLD",0)->where("FORM_TYPE", $itemInfo->item_name)->take(1)->first();
+            @$form=@FormModel::where("SOLD",0)->where("SOLD_BY",@\Auth::user()->name)->where("FORM_TYPE", $itemInfo->item_name)->take(1)->first();
             
             $pin=$form->PIN;
             $serial=$form->serial;
-            if(!empty($form)){
+            
                 @FormModel::where("PIN",$pin)->where("serial",$serial)->update(array("SOLD"=>1));
-                $customerID=Input::get('customer_id');
-                $customer=Customer::where("id",$customerID)->first();
-                $name=$customer->name;
-                $phone=$customer->phone_number;
-                $receipient=$customer->id;
-                $message="Hi $name, you have purchased $itemInfo->item_name form from TTU. Your PIN CODE is $pin and SERIAL NO. is $serial Goto admissions.ttu.edu.gh to fill your form.";
+               // $customerID=Input::get('customer_id');
+               // $customer=Customer::where("id",$customerID)->first();
+                $name=Input::get('name');
+                $phone=Input::get('phone');
+                $receipient=$customers->id;
+                $message="Hi $name, you have purchased $itemInfo->item_name form from TTU. Your PIN CODE is $pin and SERIAL NO. is $serial Goto admissions.ttuportal.com to fill your form.";
                 @$sys->firesms($message, $phone, $receipient);
-            }
+           
             return view('sale.complete')
             	->with('sales', $sales)
             	->with('pin', $pin)

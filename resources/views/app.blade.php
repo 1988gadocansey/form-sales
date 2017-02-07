@@ -37,7 +37,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Admissions Form Sales</a></li>
 					@if (Auth::check())
-						<li><a href="{{ url('/customers') }}">{{trans('menu.customers')}}</a></li>
+						<!-- <li><a href="{{ url('/customers') }}">{{trans('menu.customers')}}</a></li>
 						<!-- <li><a href="{{ url('/items') }}">{{trans('menu.items')}}</a></li>
 
 						 -->

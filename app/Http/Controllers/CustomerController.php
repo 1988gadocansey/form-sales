@@ -80,7 +80,7 @@ class CustomerController extends Controller {
 		            $customerAvatar->save();
 	        	}
 	            Session::flash('message', 'You have successfully added customer');
-	            return Redirect::to('customers');
+	            return Redirect::to('sales');
 	}
 
 	/**

@@ -13,13 +13,14 @@ table td {
         <p><img  class="image-responsive"alt="logo" style="width:59px;height:63px" src="{{url('images/logo.png')}}" alt='logo'/></p>
            <p> Takoradi Technical University</p>
            <p>Admissions Forms Point of Sale</p>
-           <p><strong>PIN CODE: <span  style='color: purple'>{{$pin}} </span></strong>     <strong>  SERIAL NO: <span style='color:green'>{{$serial}}</span></strong></p>
+           <p><strong>PIN CODE: <span  style='color: purple'>{{$pin}} </span></strong></p>     
+           <p><strong>  SERIAL NO: <span style='color:green'>{{$serial}}</span></strong></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{trans('sale.customer')}}: {{ $sales->customer->name}}<br />
-            {{trans('sale.sale_id')}}: SALE{{$saleItemsData->sale_id}}<br />
+            {{trans('sale.customer')}}: {{ $sales->customer->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{trans('sale.sale_id')}}: SALE{{$saleItemsData->sale_id}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {{trans('sale.employee')}}: {{$sales->user->name}}<br />
         </div>
     </div>
@@ -62,7 +63,7 @@ table td {
 				Chrome browser for the online admission form filling
 			</p>
 			<p>
-				<strong>II.</strong>Goto admissions.ttu.edu.gh
+				<strong>II.</strong>Goto admissions.ttuportal.com
 			</p>
 			<p>
 				<strong>II. </strong>Login with serial number and pin code in the
@@ -93,9 +94,9 @@ table td {
 				<strong>VIII. </strong>The application documents as specified (III)
 				above should sent by post to
 			<p align="center"><strong>The Registrar</strong></p>
-                                <p align="center"><strong>Takoradi Polytechnic,</strong></p>
+                                <p align="center"><strong>Takoradi Technical University,</strong></p>
                                 <p align="center"><strong>P. O Box 256, Takoradi, W/R.</strong></p>
-								<p align="left"><strong>For more information call 033 2094767 / 0262321123 / 0505284060</strong></p>
+								<p align="left"><strong>For more information call 033 2094767 / 0262321123 / 0505284060 / 0246091283</strong></p>
                                  
                                        
             
