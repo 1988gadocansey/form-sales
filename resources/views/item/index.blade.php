@@ -29,8 +29,11 @@
     @foreach($item as $value)
         <tr>
             <td>{{ $value->id }}</td>
-           
+           @if($value->item_name=='HND')
+            <td>HND(Regular)</td>
+            @else
             <td>{{ $value->item_name }}</td>
+            @endif
             <td>{{ $value->size }}</td>
           
             <td>{{ $value->selling_price }}</td>

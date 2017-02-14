@@ -40,6 +40,8 @@ Route::group(['middleware' => 'languange'], function()
 
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
+        Route::get('/reports/detail', 'ReportController@search');
+        Route::post('/reports/detail', 'ReportController@report');
 
 	Route::resource('employees', 'EmployeeController');
 
@@ -52,7 +54,7 @@ Route::group(['middleware' => 'languange'], function()
 	Route::get('api/item-kit-temp', 'ItemKitController@itemKitApi');
 	Route::get('api/item-kits', 'ItemKitController@itemKits');
 	Route::post('store-item-kits', 'ItemKitController@storeItemKits');
-
+        
 	Route::resource('tutapos-settings', 'TutaposSettingController');
 });
 /*

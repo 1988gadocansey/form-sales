@@ -12,5 +12,8 @@ class Sale extends Model {
     {
         return $this->belongsTo('App\Customer');
     }
-
+    public function date($value)
+    {
+        $this->attributes['created_at'] = date("d/m/Y", strtotime($value));
+    }
 }

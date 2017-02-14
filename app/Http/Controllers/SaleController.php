@@ -118,12 +118,12 @@ class SaleController extends Controller {
             
             $pin=$form->PIN;
             $serial=$form->serial;
-            
-                @FormModel::where("PIN",$pin)->where("serial",$serial)->update(array("SOLD"=>1));
+            $name=Input::get('name');
+                $phone=Input::get('phone');
+                @FormModel::where("PIN",$pin)->where("serial",$serial)->update(array("SOLD"=>1,"NAME"=>$name,"PHONE"=>$phone));
                // $customerID=Input::get('customer_id');
                // $customer=Customer::where("id",$customerID)->first();
-                $name=Input::get('name');
-                $phone=Input::get('phone');
+                
                 $receipient=$customers->id;
                 $message="Hi $name, you have purchased $itemInfo->item_name form from TTU. Your PIN CODE is $pin and SERIAL NO. is $serial Goto admissions.ttuportal.com to fill your form.";
                 @$sys->firesms($message, $phone, $receipient);

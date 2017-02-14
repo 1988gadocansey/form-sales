@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<div class="row">
+     	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">{{trans('report-sale.reports')}} - {{trans('report-sale.sales_report')}}</div>
@@ -39,7 +39,7 @@
             <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('quantity')}}</td>
             <td>{{ $value->user->name }}</td>
             <td>{{ $value->customer->name }}</td>
-            <td>${{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
+            <td>GHC{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
             <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td>
             <td>{{ $value->payment_type }}</td>
             <td>{{ $value->comments }}</td>
@@ -80,4 +80,5 @@
 		</div>
 	</div>
 </div>
+ 
 @endsection

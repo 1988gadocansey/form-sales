@@ -8,6 +8,8 @@
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/footer.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/datepicker.css') }}" rel="stylesheet">
+	
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="{{url('images/logo.png')}}" type="image/x-icon" />
@@ -49,7 +51,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{trans('menu.reports')}} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								 <li><a href="{{ url('/reports/sales') }}">{{trans('menu.sales_report')}}</a></li>
+								 <li><a href="{{ url('/reports/sales') }}">Daily transactions</a></li>
+                                                                 <li><a href="{{ url('/reports/detail') }}">Detailed Reports</a></li>
 							</ul>
 						</li>
 						 @endif
@@ -84,5 +87,27 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+ 
+<script src="{{asset('/js/bootstrap-datepicker.js')}}"></script>
+<script>
+$('.datepicker').datepicker();
+
+</script>
+<script>
+    function printDiv(divID) {
+                //Get the HTML of div
+                var divElements = document.getElementById(divID).innerHTML;
+                        //Get the HTML of whole page
+                        var oldPage = document.body.innerHTML;
+                        //Reset the page's HTML with div's HTML only
+                        document.body.innerHTML =
+                        "<html><head><title></title></head><body>" +
+                        divElements + "</body>";
+                        //Print Page
+                        window.print();
+                        //Restore orignal HTML
+                        document.body.innerHTML = oldPage;
+                }
+    </script>
 </body>
 </html>
